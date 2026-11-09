@@ -871,6 +871,7 @@
   .tv-t{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
   .shot .mtile,.sp-shot .mtile{height:100%;}
   @media (max-width:520px){ .vposter .ttl h3{-webkit-line-clamp:2;} .vposter .ttl{right:18px;} }
+  .player[data-embed]{cursor:pointer;}
 </style>
 </head>
 <body>
@@ -1493,6 +1494,9 @@
     var i = MEDIA.push(s) - 1, r = s.m, im = photoImg(s, initials(s.name));
     var player = r.kind === 'link'
       ? '<a class="btn btn-sky vlink" href="' + esc(r.url) + '" target="_blank" rel="noopener">Listen on ' + esc(r.provider || 'the web') + ' <span class="arr" aria-hidden="true">↗</span></a>'
+      : r.kind === 'embed' && r.provider === 'Google Drive'
+      ? '<div class="player" data-embed="' + esc(r.embed) + '"><button class="pbtn" type="button" aria-label="Play voice note from ' + esc(s.name) + '"><svg class="pico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg></button>' +
+        '<div class="wave" aria-hidden="true"></div><span class="ptime">' + esc(s.duration ? tfmt(durSec(s.duration)) : 'Play') + '</span></div>'
       : r.kind === 'embed'
       ? '<iframe src="' + esc(r.embed) + '" title="Voice note from ' + esc(s.name) + '" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" style="height:' + (r.provider === 'Google Drive' ? 96 : r.provider === 'SoundCloud' ? 120 : 220) + 'px"></iframe>'
       : '<div class="player"><button class="pbtn" type="button" aria-label="Play voice note from ' + esc(s.name) + '"><svg class="pico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg></button>' +
@@ -1503,6 +1507,20 @@
       '<div><span class="k">Voice note' + (s.source ? ' · ' + esc(s.source) : '') + '</span><h3>' + esc(s.name) + '</h3>' + (s.text ? '<p>' + hl(s.text, 'b') + '</p>' : '') + '</div>' + player + '</div>';
   }
   function wireVoice(card){
+    var de = $('.player[data-embed]', card);
+    if (de) {   // Google Drive will not stream audio into other sites: open Google's player in place on press
+      var sv = MEDIA[+card.getAttribute('data-voice')], sd = 7 + hash(sv.name) % 97, wv = $('.wave', de);
+      for (var k = 0; k < 54; k++) { sd = (sd * 9301 + 49297) % 233280; var bar = document.createElement('i'); bar.style.height = (22 + Math.round(sd / 233280 * 78 * (0.55 + 0.45 * Math.sin(k / 4)))) + '%'; wv.appendChild(bar); }
+      de.addEventListener('click', function () {
+        stopAll();
+        var f = document.createElement('iframe');
+        f.src = de.getAttribute('data-embed'); f.title = 'Voice note from ' + sv.name; f.allow = 'autoplay; encrypted-media';
+        f.referrerPolicy = 'strict-origin-when-cross-origin'; f.setAttribute('data-active', '1'); f.style.height = '96px';
+        de.replaceWith(f);
+        track('voice_play', { name: sv.name });
+      });
+      return;
+    }
     var aud = $('audio', card); if (!aud) return;
     var s = MEDIA[+card.getAttribute('data-voice')], btn = $('.pbtn', card), ico = $('.pico', card), wave = $('.wave', card), time = $('.ptime', card);
     var PLAY = '<path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/>';
