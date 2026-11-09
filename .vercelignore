@@ -1,0 +1,5 @@
+# Only the website itself goes to Vercel. Templates, tools and docs stay local.
+sheet-template
+tools
+README.md
+.github

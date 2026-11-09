@@ -1,0 +1,26 @@
+# Optional: once a day, copy the live Google Sheet into data/snapshot.js so the
+# page's instant-load / offline fallback never drifts far from the sheet.
+name: Refresh stories snapshot
+on:
+  schedule:
+    - cron: '30 0 * * *'   # 06:00 IST daily
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node tools/update-snapshot.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/snapshot.js; then echo "No change"; exit 0; fi
+          git config user.name "stories-bot"
+          git config user.email "stories-bot@users.noreply.github.com"
+          git add data/snapshot.js
+          git commit -m "Refresh stories snapshot from Google Sheet"
+          git push
