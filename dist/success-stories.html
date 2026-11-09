@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PROITBRIDGE · Success Stories</title>
 <meta name="description" content="Real PROITBRIDGE learners, real offers, real Google reviews: pick your starting point (college student, fresher, career gap, non-IT switch, IT role switch, IT upskill) and see people who started where you are.">
 <meta name="theme-color" content="#0a1f44">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230a1f44%27/%3E%3Cpath d=%27M22 46V18h12a9 9 0 0 1 0 18h-6%27 fill=%27none%27 stroke=%27%235cc4f5%27 stroke-width=%276%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PROITBRIDGE Success Stories: real offers, real reviews">
@@ -832,6 +834,43 @@
     .wave i:nth-child(2n){display:none;}
     .stat{padding:22px 16px;}
   }
+
+  /* ---------- v5: offers without screenshots ---------- */
+  .ot{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;width:100%;height:100%;padding:22px 24px;text-align:left;color:#fff;overflow:hidden;
+    background:radial-gradient(360px 240px at 85% 0%, rgba(26,163,232,.42), rgba(26,163,232,0) 62%),linear-gradient(155deg,#123a78,var(--navy-deep));transition:transform .5s var(--ease);}
+  .ot::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px;}
+  .ot > *{position:relative;}
+  .ot-k{font-size:13px;color:#a9c6e0;}
+  .ot b{font-size:clamp(24px,2.3vw,32px);font-weight:800;letter-spacing:-.035em;line-height:1.04;color:#fff;overflow-wrap:anywhere;}
+  .ot-c{font-size:14px;color:var(--sky-light);}
+  .shot.otile{cursor:pointer;}
+  .shot.otile:hover .ot{transform:scale(1.03);}
+  .sp-ot{cursor:pointer;}
+  .sp-ot .ot{padding:40px;}
+  .sp-ot .ot-k{font-size:16px;}
+  .sp-ot .ot b{font-size:clamp(40px,4.4vw,64px);}
+  .sp-ot .ot-c{font-size:18px;}
+  .ot-pane{display:flex;width:100%;height:100%;min-height:440px;}
+  .ot-pane .ot{min-height:440px;padding:40px;}
+  .ot-pane .ot b{font-size:clamp(36px,3.6vw,52px);}
+  .hcard{margin-top:16px;padding:30px 30px 28px;border-radius:22px;border:1px solid rgba(255,255,255,.16);
+    background:radial-gradient(420px 260px at 85% 0%, rgba(26,163,232,.42), rgba(26,163,232,0) 65%),linear-gradient(155deg,#123a78,var(--navy-deep));
+    box-shadow:0 50px 90px -40px rgba(0,0,0,.85),0 0 0 8px rgba(255,255,255,.04);}
+  .hcard-from{display:block;margin-top:26px;font-size:17px;color:#8fb3d2;}
+  .hcard-from s{text-decoration-color:rgba(143,179,210,.55);}
+  .hcard-role{display:block;margin-top:8px;font-size:clamp(30px,2.8vw,44px);font-weight:800;line-height:1.02;letter-spacing:-.04em;color:#fff;text-wrap:balance;}
+  .hcard-at{display:block;margin-top:10px;font-size:16px;color:#a9c6e0;}
+  .hcard .sp-pkg{margin-top:18px;font-size:clamp(40px,3.6vw,56px);}
+  .hcard .btn{margin-top:24px;}
+  @media (max-width:980px){ .sp-ot .ot{padding:28px;} .ot-pane,.ot-pane .ot{min-height:260px;} .hcard{padding:24px 22px;} }
+
+  /* ---------- v6: QA polish ---------- */
+  .tv-img.yt,.vposter.yt{background-size:auto 134%;background-position:center;}
+  .vposter .ttl h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .vposter .ttl{right:110px;}
+  .tv-t{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .shot .mtile,.sp-shot .mtile{height:100%;}
+  @media (max-width:520px){ .vposter .ttl h3{-webkit-line-clamp:2;} .vposter .ttl{right:18px;} }
 </style>
 </head>
 <body>
@@ -859,19 +898,15 @@
     </div>
 
     <div class="hero-media">
-      <div class="media-k"><span>Watch<span class="long"> · Learner feedback</span></span><span class="len" id="heroLen"></span></div>
+      <div class="media-k"><span id="heroK">Watch<span class="long"> · Learner feedback</span></span><span class="len" id="heroLen"></span></div>
       <div id="heroVideo"></div>
-      <ul class="media-points">
-        <li><b id="hpTop">–</b>Top offer, with proof</li>
-        <li><b id="hpProof">–</b>Offer posts</li>
-        <li><b id="hpRev">–</b>Learner reviews</li>
-      </ul>
+      <ul class="media-points" id="hpList"></ul>
     </div>
 
     <div class="hero-cta">
       <div class="cta-row">
         <a class="btn btn-navy" href="#spotlight">See their stories <span class="arr" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-        <a class="ghost" href="#testimonials"><span style="color:var(--star)">★</span>Read what learners say</a>
+        <a class="ghost" id="heroGhost" href="#testimonials"><span style="color:var(--star)">★</span><span>Read what learners say</span></a>
       </div>
       <div class="trust" id="trust"></div>
     </div>
@@ -892,7 +927,7 @@
     <div class="sp-head">
       <div>
         <h2>Where they started. Where they are now.</h2>
-        <p>Hand-picked stories from our learners, each with the offer post to prove it.</p>
+        <p id="spSub">Hand-picked stories from our learners, each with the offer post to prove it.</p>
       </div>
       <div class="sp-nav">
         <button type="button" id="spPrev" aria-label="Previous story"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -910,7 +945,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2>Which one sounds like you?</h2>
-      <p>Pick your starting point to see the offers and testimonials from people who began exactly there.</p>
+      <p id="jSub">Pick your starting point to see the offers and testimonials from people who began exactly there.</p>
     </div>
     <div class="jgrid" id="jgrid"></div>
   </div>
@@ -920,7 +955,7 @@
 <section id="stories">
   <div class="wrap">
     <div class="sub-h">
-      <div><h3 id="offersTitle">Every offer, with proof.</h3><p>Tap a card for the full story and the original post.</p></div>
+      <div><h3 id="offersTitle">Every offer, with proof.</h3><p id="offersSub">Tap a card for the full story and the original post.</p></div>
     </div>
     <div class="pills" id="pills" role="tablist" aria-label="Filter offers by starting point"></div>
     <div id="catSum"></div>
@@ -981,7 +1016,7 @@
     <nav aria-label="Pages">
       <a href="#spotlight">Spotlight</a>
       <a href="#stories">Offers</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#testimonials" id="footT">Testimonials</a>
       <a href="#stories" data-link-to="induction">Induction</a>
     </nav>
     <span class="disc">Packages and roles are as reported by learners and mentors at the time of the offer. Phone numbers in screenshots are blurred; some names and employers are withheld at the learner's request. Category outcomes are program targets, not guarantees: results depend on effort, background and market conditions. This site is not a part of the Facebook website or Meta Platforms, Inc. and is not endorsed by Meta in any way.</span>
@@ -1095,7 +1130,7 @@ window.SS_CONFIG = {
 </script>
 <script>
 /* sheet snapshot (embedded 2026-11-09) */
-window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,Type,Category,Tags,Featured,Name,Masked,Photo,Batch,Mentor,Program,Modules,Previous role,Role,Company,City,Package (LPA),Headline,Offer date,Text,Stars,Source,Media,Poster,Duration,Note\r\nYes,Offer,IT Upskill,Salary hike,Yes,Renuka V,,,Batch 52,Rakshitha V R,Adv. Data Analytics + Adv. Data Science & AI + Gen AI & Agentic AI,\"Python, Statistics, SQL\",,Technical Lead,Fujitsu,Chennai,33.,,2026-08-24,,,Mentors' channel,assets/proof/renuka-fujitsu.webp,,,\r\nYes,Offer,IT Upskill,Salary hike,,Kumar JK,,,Batch 26,Jagadeeshwari,Data Analytics + Data Science & AI + Agentic AI,\"Python, Statistics, SQL, ML, DL, NLP, Agentic AI\",,Senior Full Stack Developer,Mphasis,Bangalore,28.,,2026-08-28,,,Mentors' channel,assets/proof/kumar-mphasis.webp,,,\r\nYes,Offer,IT → AI Switch,\"Internal move, Salary hike\",,Santosh,,,,Silpa,,,QA,AI Engineer,,,,QA → AI,,\"In the interviews/discussions, many of the questions were exactly from the topics you covered in your videos, like RAG, Word2Vec, and related concepts.\",,Mentors' channel,assets/proof/santosh-ijp.webp,,,Internal move (IJP) in the same company.\r\nYes,Offer,IT → AI Switch,Career switch,,Pradeeph,,,,Diya,,,Technical Consultant,AI Technical Lead,Celestial Systems,,,AI Lead,,,,Mentors' channel,assets/proof/pradeeph-celestial.webp,,,\r\nYes,Offer,IT → AI Switch,Career switch,,Ragavendran S.,,,Batch 34,Diya,Adv. Data Analytics + Adv. Data Science & AI + Agentic AI & Gen AI,\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",,Agentic AI Consultant,Infosys,,,Infosys,2026-09-27,,,Mentors' channel,assets/proof/ragavendran-infosys.webp,,,Got Infosys before finishing the course.\r\nYes,Offer,IT → AI Switch,Abroad,,Kavimalar,,assets/kavimalar.jpg,Premium,Jagadeeshwari,Advanced Full Data Analytics (Premium),\"Python, Statistics, SQL, Power BI\",,HR Data Apprenticeship,iMobility,France,12.,,2026-08-13,,,Mentors' channel,assets/proof/kavimalar-france.webp,,,\r\nYes,Offer,IT Upskill,,,Ramalakshmi,,,Premium,Roshan S,Adv. Data Analytics + Adv. Data Science & AI + Agentic AI & Gen AI,\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",,Senior Data Analyst,Arcadia,Chennai,8.,,2026-09-23,,,Mentors' channel,assets/proof/ramalakshmi-arcadia.webp,,,\r\nYes,Offer,IT Upskill,,,,Yes,,,,Adv. Data Analytics + Adv. Data Science & AI + Agentic AI & Gen AI,\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",Insurance tech · RPA,Regional Managed Services Lead,,,,Lead,2026-08-14,,,,,,,\r\nYes,Offer,Non-IT → AI,Career switch,,Strephin,,,,,,,BPO Executive (3 yrs),AI Generalist · Internship,,,,BPO → AI,,Now I understand Python easily.,,Mentors' channel,assets/proof/strephin-bpo-to-ai.webp,,,In 90 days.\r\nYes,Offer,Fresher,,,Parimalraj B,,assets/parimalraj-b.jpg,Premium,Silpa,Advanced Data Science & AI (Premium),\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",Business Development Associate,Data Scientist,Amvion Labs,Chennai,7.8,,2025-07-13,,,Mentors' channel,assets/proof/parimalraj-amvion.webp,,,\r\nYes,Offer,,,,Jeevanantham,,,,Jagadeeshwari,,,,Associate Data Scientist,Cognizant,Bangalore,13.,,,,,Mentors' channel,assets/proof/jeevanantham-cognizant.webp,,,\r\nYes,Offer,,,,Sivabalan G,,,Premium,,,,,AI Engineer,Rohnium India,Chennai,5.,,,,,Mentors' channel,assets/proof/sivabalan-rohnium.webp,,,\r\nYes,Offer,,,,Vijay Subramani AL,,,Batch 42,Priya V,,,,Data Operations Analyst,NielsenIQ,Chennai,3.46,,,,,Mentors' channel,assets/proof/vijay-nielseniq.webp,,,\r\nYes,Proof,,Real message,,Recruiter message,,,,,,,,,,,,,,He wants to hire AI engineers trained by us,,,assets/proof/recruiter-message.webp,,,A recruiter reaching our team directly.\r\nYes,Proof,,Referral,,EY interview call,,,,,,,,,,,,,,He will get a call from EY for interview,,,assets/proof/ey-referral.webp,,,A referral from our hiring network.\r\nYes,Review,Non-IT → AI,,Yes,Magesh Kumar,,,,,,,,,,,,\"Non-IT · VFX, 7 yrs\",,\"I'm Mahesh, 33 years old, with around 7 years of experience in the VFX field, My salary was only around ₹25,000. … When I joined, I had almost zero knowledge of coding and zero confidence. … But today, I feel completely different. I have completed Python, Statistics, SQL, Machine Learning, and Deep Learning. **Even I'm surprised when I think about how far I have come.**\",5,Google,assets/reviews/magesh-kumar.webp,,,\r\nYes,Review,Non-IT → AI,,,ari arasan,,,,,,,,,,,,Non-IT background,,\"I joined this course last month, and I am from a completely non-IT background. Before joining, I didn't really know much about coding or programming. After joining, I found the classes very easy to understand. The concepts are explained in a simple way, and **learning in Tamil has made it much more comfortable for me.** … A big salute to you, John sir, for making coding so simple and understandable\",5,Google,assets/reviews/ari-arasan.webp,,,\r\nYes,Review,Fresher,,,ArunKumar Periyasamy,,,,,,,,,,,,Fresher,,\"I'm currently learning at Proitbridge as a fresher, and my experience so far has been very positive. The concepts are explained in a simple and easy-to-understand way, which helps me build confidence in my learning. **The trainers and staff are very supportive and always guide me whenever I have doubts.** Their guidance is helping me prepare myself to transition into a new career in AI and Data Science.\",5,Google,assets/reviews/arunkumar-periyasamy.webp,,,\r\nYes,Review,Career Gap,,,Nila ravichandran,,,,,,,,,,,,Career gap · restart,,\"Our coach John sir is one of the main reasons I decided to join Proitbridge. The way he explains concepts in Tamil makes even difficult topics easier to understand, I would also like to thank my mentor Navin Prabhu sir who has been guiding me during my learning so far. … I'm still in the middle of my learning journey, but so far, I'm really happy with the support and guidance I'm receiving from Proitbridge. **I'm hopeful that this learning experience will help me restart my career and achieve my goals.**\",4,Google,assets/reviews/nila-ravichandran.webp,,,\r\nYes,Review,Career Gap,,,Subash G,,,,,,,,,,,,Career transition,,\"**This is a great platform for anyone looking to transition their career and build their skills.** The course content is well-structured, clearly defined, and supported by practical learning plans. … The guidance, support, and learning experience provided by the team have been excellent throughout the journey.\",5,Google,assets/reviews/subash-g.webp,,,\r\nYes,Review,IT Upskill,,,Sakthi.J,,,,,,,,,,,,Upskilling · data,,\"I came into this program as a fairly basic learner in the data space, and I was looking to upskill and build a stronger foundation in modern AI. Honestly, ProITBridge turned out to be exactly what I needed. … What I really loved was how practical everything felt. I got to work on dedicated ML and DL projects that helped me connect theory to real application, and **the NLP module alone had 15 projects**, which gave me a lot of hands on practice across different scenarios instead of just one or two examples.\",5,Google,assets/reviews/sakthi-j.webp,,,\r\nYes,Review,IT → AI Switch,,,Tamil Arasan,,,,,,,,,,,,Came from another course,,\"I am currently taking a Generative AI and Agentic AI course at Proitbridge Institute. I have completed the Machine Learning module, and the entire course structure is well organized and easy to understand for anyone. **I had completed another course before, but I did not gain as much knowledge from it. At Proitbridge Institute, I have learned much more through practical sessions and hands-on experience.** Whenever I have doubts, the support team is always available to help and guide me.\",5,Google,assets/reviews/tamil-arasan.webp,,,\r\nYes,Video,Fresher,,Yes,ArunKumar P.,,,,,,,,,,,,\"A fresher's journey, **in his own words.**\",,,,,assets/arunkumar-feedback.mp4,assets/poster-arunkumar.jpg,03:38,\r\nYes,Video,,,,PROITBRIDGE learner,,,,,,,,,,,,Straight from **a learner.**,,\"Unscripted feedback a learner sent us. No edits, no scripts.\",,,assets/learner-feedback.mp4,assets/poster-feedback.jpg,02:17,\r\nYes,Voice,,,,Sreeram P.,,assets/sreeram-p.jpg,,,,,,,,,,,,He sent us this voice note. Press play to hear it unedited.,,WhatsApp,assets/sreeram-voice.m4a,,02:24,\r\nYes,Video,College Student,,Yes,wasiq Mohideen testing,No,https://drive.google.com/file/d/1H4tIyT_owKKtQb1ryEjxL0GLgV5VR8UT/view?usp=sharing,,Roshan S,,,,Data Operations Analyst,,,,,,\"I am currently taking a Generative AI and Agentic AI course at Proitbridge Institute. I have completed the Machine Learning module, and the entire course structure is well organized and easy to understand for anyone. **I had completed another course before, but I did not gain as much knowledge from it. At Proitbridge Institute, I have learned much more through practical sessions and hands-on experience.** Whenever I have doubts, the support team is always available to help and guide me.\",4,WhatsApp,https://drive.google.com/file/d/1S9xhNsra3YSQX1803onpwsvJtdMcvhw4/view?usp=sharing,https://drive.google.com/file/d/1H4tIyT_owKKtQb1ryEjxL0GLgV5VR8UT/view?usp=sharing,,","stats":"Where,Value,Label,Detail\r\nband,80+,Batches trained,~20 learners into industry every quarter\r\nband,500+,Placements,\"overall, and counting\"\r\ntrust,500+,placements,\r\ntrust,183K,on YouTube,\r\ntrust,ISO 9001:2015,,"};
+window.SS_SNAPSHOT = {"generated":"2026-11-09T12:48:27.636Z","stories":"Publish,Type,Category,Tags,Featured,Name,Masked,Photo,Batch,Mentor,Program,Modules,Previous role,Role,Company,City,Package (LPA),Headline,Offer date,Text,Stars,Source,Media,Poster,Duration,Note\r\nYes,Offer,IT Upskill,,No,Renuka V,,,Batch 52,Rakshitha V R,Advanced Data Analytics + Advanced Data Science & AI + Gen AI & Agentic AI,\"Python, Statistics, SQL\",,Technical Lead,Fujitsu,Chennai,33.,,2026-08-24,,,,https://drive.google.com/file/d/1S9xhNsra3YSQX1803onpwsvJtdMcvhw4/view,,,\r\nYes,Offer,IT Upskill,,No,Kumar JK,,,Batch 26,Jagadeeshwari,Data Analytics + Data Science & AI + Agentic AI,\"Python, Statistics, SQL, ML, DL, NLP, Agentic AI\",,Senior Full Stack Developer,Mphasis,Bangalore,28.,,2026-08-28,,,,,,,\r\nYes,Offer,IT → AI Switch,Abroad,Yes,Kavimalar,,https://drive.google.com/file/d/1Lx8wPBUVNZe4vJHqeRY6txCcMumqOeEw/view,Premium,Jagadeeshwari,Advanced Full Data Analytics (Premium),\"Python, Statistics, SQL, Power BI\",,HR Data Apprenticeship,iMobility,France,12.,,2026-08-13,,,,,,,\r\nYes,Offer,Fresher,,No,Parimalraj B,,https://drive.google.com/file/d/1MF-OLUD57ssRdNSh1zAwTEOkqvmUHuFU/view,Premium,Silpa,Advanced Data Science & AI (Premium),\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",Business Development Associate,Data Scientist,Amvion Labs,Chennai,7.8,,2025-07-13,,,,,,,\r\nYes,Offer,IT Upskill,,,Ramalakshmi,,,Premium,Roshan S,Advanced Data Analytics + Advanced Data Science & AI + Agentic AI & Gen AI,\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",,Senior Data Analyst,Arcadia,Chennai,8.,,2026-09-23,,,,,,,\r\nYes,Offer,IT → AI Switch,,,Ragavendran,,,Batch 34,Diya,Advanced Data Analytics + Advanced Data Science & AI + Agentic AI & Gen AI,\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",,Agentic AI Consultant,Infosys,,,New AI role,2026-09-27,,,,,,,\r\nYes,Offer,IT Upskill,,,,Yes,,,,Advanced Data Analytics + Advanced Data Science & AI + Agentic AI & Gen AI,\"Python, SQL, Statistics, Excel, ML, DL, NLP, Gen AI, Agentic AI\",Insurance technology (RPA),Regional Managed Services Lead,,,,Lead role,2026-08-14,,,,,,,","stats":"Where,Value,Label,Detail\r\nband,80+,Batches trained,~20 learners into industry every quarter\r\nband,500+,Placements,\"overall, and counting\"\r\ntrust,500+,placements,\r\ntrust,183K,on YouTube,\r\ntrust,ISO 9001:2015,,"};
 </script>
 <script>
 (function () {
@@ -1239,8 +1274,9 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   }
   function paneHTML(r, preferImage, alt){
     if (!r) return '<div class="lb-ph">' + I.lock + 'Screenshot withheld for privacy</div>';
-    if (r.kind === 'image' || (preferImage && r.image && !r.thumbOnly)) return '<img src="' + esc(r.image) + '" alt="' + esc(alt || '') + '"' + linkAttr(r) + ' onerror="SSbad(this)">';
-    if (r.kind === 'embed') return '<iframe class="lb-frame ' + (r.shape === 'audio' ? 'wide' : r.shape || 'wide') + '" src="' + esc(r.embed) + '" title="' + esc(alt || r.provider) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write" allowfullscreen></iframe>';
+    // Google Drive links can be a picture OR a video, so the viewer always uses Drive's own player (it shows both)
+    if (r.kind === 'image' || (preferImage && r.image && !r.thumbOnly && r.provider !== 'Google Drive')) return '<img src="' + esc(r.image) + '" alt="' + esc(alt || '') + '"' + linkAttr(r) + ' onerror="SSbad(this)">';
+    if (r.kind === 'embed') return '<iframe class="lb-frame ' + (r.shape === 'audio' ? 'wide' : r.shape || 'wide') + '" src="' + esc(r.embed) + '" title="' + esc(alt || r.provider) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     if (r.kind === 'video') return '<video class="lb-frame' + (preferImage ? ' wide' : ' vid') + '" src="' + esc(r.src) + '" controls playsinline' + (preferImage ? '' : ' autoplay') + '></video>';
     if (r.kind === 'audio') return '<div class="lb-link"><b>Voice note</b><audio src="' + esc(r.src) + '" controls></audio></div>';
     return linkCard(r);
@@ -1250,7 +1286,8 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   var FOLDER = { offer:'assets/proof/', proof:'assets/proof/', review:'assets/reviews/', quote:'assets/' };
 
   /* ---------------- rows → stories ---------------- */
-  var ISSUES = [], BAD = [];
+  var ISSUES = [], BAD = [], ERRS = [];
+  window.addEventListener('error', function (e) { ERRS.push((e.message || 'Script error') + (e.lineno ? ' (line ' + e.lineno + ')' : '')); try { renderCheck(); } catch (x) {} });
   function issue(row, msg){ ISSUES.push((row ? 'Row ' + row + ': ' : '') + msg); }
   function list(v){ return String(v || '').split(/[,;|]/).map(function (s) { return s.trim(); }).filter(Boolean); }
   function num(v){ var m = String(v || '').replace(/,/g, '').match(/\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; }
@@ -1343,7 +1380,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function pick(type){ return DATA.stories.filter(function (s) { return s.type === type; }); }
   function isNew(s){ if (!s.date) return false; var d = (Date.now() - new Date(s.date + 'T00:00:00').getTime()) / 864e5; return d >= 0 && d <= NEW_DAYS; }
   function byFeatured(a, b){ return ((b.featured ? 1 : 0) - (a.featured ? 1 : 0)) || (b.row - a.row); }
-  function playing(scope){ return $$('video,audio', scope).some(function (m) { return !m.paused && !m.ended; }) || !!$('iframe', scope || document); }
+  function playing(scope){ return $$('video,audio', scope).some(function (m) { return !m.paused && !m.ended; }) || !!$('iframe[data-active]', scope || document); }
   function stopAll(except){ $$('video,audio').forEach(function (m) { if (m !== except && !m.paused) m.pause(); }); }
   function wa(text){ var n = String(CFG.WHATSAPP || '').replace(/\D/g, ''); return n ? 'https://wa.me/' + n + '?text=' + encodeURIComponent(text) : ''; }
   function applyLinks(root){
@@ -1357,7 +1394,13 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     var src = img.getAttribute('src'), link = img.getAttribute('data-link'), ini = img.getAttribute('data-ini');
     var p = img.parentNode, shot = img.closest('.shot');
     if (!link && BAD.indexOf(src) < 0) BAD.push(src);
+    var fbHost = img.closest('[data-fb]');
     if (ini !== null) { p.classList.add('ini'); p.textContent = ini; }
+    else if (fbHost && !link) {
+      var box = document.createElement('div'); box.innerHTML = fbHost.getAttribute('data-fb');
+      $$('.tplay', fbHost).forEach(function (x) { x.remove(); });
+      img.replaceWith(box.firstChild);
+    }
     else if (link) {   // a web page, not an image: show a "View on …" tile / card instead
       var r = { kind: 'link', url: link, provider: img.getAttribute('data-prov') || '' }, tmp = document.createElement('div');
       tmp.innerHTML = shot ? tileHTML(r) : linkCard(r);
@@ -1372,6 +1415,14 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function avatar(s){
     return '<div class="av">' + (photoImg(s, initials(s.name)) || (s.masked ? I.lock : esc(initials(s.name)))) + '</div>';
   }
+  function offerTile(s){
+    return '<span class="ot"><span class="ot-k">Placed at</span><b>' + esc(s.company || s.headline || s.role) + '</b>' +
+      (s.city ? '<span class="ot-c">' + esc(s.city) + '</span>' : '') + '</span>';
+  }
+  /* a Drive link can be a picture or a video: a Duration (or a "Video" tag) marks it as a video */
+  function isVid(s){ var r = s.m; return !!r && (r.kind === 'video' || r.thumbOnly || (r.provider === 'Google Drive' && (!!s.duration || s.tags.some(function (t) { return t.k === 'video'; })))); }
+  function fbTile(s){ return isVid(s) ? tileHTML({ kind: 'video', provider: s.m ? s.m.provider : '' }) : offerTile(s); }
+  function vidMark(s){ return isVid(s) && !(s.m && s.m.thumbOnly) ? '<span class="tplay">' + I.play + '</span>' : ''; }
   function displayName(s){ return s.masked ? 'Name withheld' : s.name; }
   function pkgHTML(s){ return s.lpa != null ? '<div class="n">' + fmtLpa(s.lpa) + '<small>LPA</small></div>' : '<div class="n tx">' + esc(s.headline || 'Placed') + '</div>'; }
   function newBadge(s){ return isNew(s) ? '<span class="nw">New</span>' : ''; }
@@ -1384,17 +1435,24 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     TOP = offers.filter(function (o) { return o.lpa != null; }).sort(function (a, b) { return b.lpa - a.lpa; })[0] || null;
     $('#coin').hidden = !TOP;
     $('#coinTop').textContent = TOP ? fmtLpa(TOP.lpa) : '–';
-    $('#hpTop').textContent = TOP ? fmtLpa(TOP.lpa) + ' LPA' : '–';
-    $('#hpProof').textContent = proofs; $('#hpRev').textContent = revs;
+    var coCount = {}; offers.forEach(function (o) { if (o.company) coCount[norm(o.company)] = 1; });
+    var pts = [];
+    if (TOP) pts.push([fmtLpa(TOP.lpa) + ' LPA', 'Top offer']);
+    if (offers.length) pts.push([offers.length, offers.length === 1 ? 'Learner placed' : 'Learners placed']);
+    if (revs) pts.push([revs, 'Learner reviews']);
+    if (proofs && pts.length < 3) pts.push([proofs, 'Offer posts']);
+    if (Object.keys(coCount).length && pts.length < 3) pts.push([Object.keys(coCount).length, 'Hiring companies']);
+    $('#hpList').innerHTML = pts.slice(0, 3).map(function (p) { return '<li><b>' + esc(p[0]) + '</b>' + esc(p[1]) + '</li>'; }).join('');
 
     var abroad = offers.filter(function (o) { return o.city && o.tags.some(function (t) { return t.k === 'abroad'; }); })[0];
     $('#heroSub').innerHTML = (TOP ? (abroad && abroad !== TOP ? 'From an offer in ' + esc(abroad.city) : 'From freshers to working professionals') +
       ' to a <b>' + fmtLpa(TOP.lpa) + ' LPA ' + esc(TOP.role) + (TOP.company ? ' role at ' + esc(TOP.company) : ' role') + '</b>. ' : '') +
-      'Pick where you\'re starting from and see the people who started there, with the screenshots to prove it.';
+      'Pick where you\'re starting from and see the people who started there' + (proofs ? ', with the offer posts to prove it.' : '.');
 
     var cells = [];
-    if (TOP) cells.push('<div class="stat"><div class="v">' + fmtLpa(TOP.lpa) + '<small>LPA</small></div><div class="l"><b>Highest offer</b>backed by the offer post</div></div>');
-    cells.push('<div class="stat"><div class="v">' + proofs + '</div><div class="l"><b>Offer posts</b>shown on this page</div></div>');
+    if (TOP) cells.push('<div class="stat"><div class="v">' + fmtLpa(TOP.lpa) + '<small>LPA</small></div><div class="l"><b>Highest offer</b>' + (TOP.m ? 'backed by the offer post' : 'from our placement records') + '</div></div>');
+    if (proofs) cells.push('<div class="stat"><div class="v">' + proofs + '</div><div class="l"><b>Offer posts</b>shown on this page</div></div>');
+    else if (offers.length) cells.push('<div class="stat"><div class="v">' + offers.length + '</div><div class="l"><b>Learners placed</b>featured on this page</div></div>');
     DATA.stats.band.slice(0, 2).forEach(function (r) { cells.push('<div class="stat"><div class="v">' + statVal(r.value) + '</div><div class="l"><b>' + esc(r.label) + '</b>' + esc(r.detail) + '</div></div>'); });
     var st = $('#stats'); st.innerHTML = cells.join(''); st.style.setProperty('--n', cells.length);
 
@@ -1413,7 +1471,22 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     if (playing(box)) return;
     var vids = pick('video');
     HERO = vids.filter(function (v) { return v.featured; })[0] || vids[0] || null;
-    if (!HERO) { box.innerHTML = ''; $('#heroLen').textContent = ''; return; }
+    if (!HERO) {
+      $('#heroLen').textContent = '';
+      var f = pick('offer').filter(function (o) { return !o.masked && o.featured; })[0] || (TOP && !TOP.masked ? TOP : null) || pick('offer').filter(function (o) { return !o.masked; })[0];
+      if (!f) { box.innerHTML = ''; $('#heroK').textContent = ''; return; }
+      $('#heroK').textContent = 'Featured placement';
+      var c = catById(f.cat), where = [f.company, f.city].filter(Boolean).join(', ');
+      box.innerHTML = '<div class="hcard">' +
+        '<div class="sp-who">' + avatar(f) + '<div><b>' + esc(f.name) + '</b>' + (c ? '<span class="cg">' + esc(c.short) + '</span>' : '') + '</div></div>' +
+        '<span class="hcard-from"><s>' + esc(joinedAs(f)) + '</s></span>' +
+        '<span class="hcard-role">' + esc(f.role) + '</span>' + (where ? '<span class="hcard-at">at ' + esc(where) + '</span>' : '') +
+        (f.lpa != null ? '<div class="sp-pkg">' + fmtLpa(f.lpa) + '<small>LPA</small></div>' : '') +
+        '<button class="btn btn-sky" type="button">Read ' + esc(firstName(f)) + '’s story <span class="arr" aria-hidden="true">' + I.arr + '</span></button></div>';
+      $('.hcard .btn', box).addEventListener('click', function () { lbOpen([{ story: f, res: f.m, alt: 'Offer: ' + f.name }], 0, this); track('story_open', { name: f.name, from: 'hero' }); });
+      return;
+    }
+    $('#heroK').innerHTML = 'Watch<span class="long"> · Learner feedback</span>';
     $('#heroLen').textContent = HERO.duration ? HERO.duration + ' min' : '';
     box.innerHTML = vframe(HERO, true);
     wireFrames(box, true);
@@ -1423,7 +1496,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function vframe(s, hero){
     var i = MEDIA.push(s) - 1, poster = posterOf(s), c = catById(s.cat);
     var k = [s.name, c ? c.short : ''].filter(Boolean).join(' · ');
-    return '<div class="vframe" data-vid="' + i + '"><button class="vposter" type="button"' + (poster ? ' style="background-image:url(\'' + esc(cssUrl(poster)) + '\')"' : '') +
+    return '<div class="vframe" data-vid="' + i + '"><button class="vposter' + (/i\.ytimg\.com/.test(poster) ? ' yt' : '') + '" type="button"' + (poster ? ' style="background-image:url(\'' + esc(cssUrl(poster)) + '\')"' : '') +
       ' aria-label="Play video from ' + esc(s.name) + (s.duration ? ', ' + esc(s.duration) : '') + '">' +
       '<span class="ttl"><span class="k">' + esc(k) + '</span><h3>' + hl(s.headline || 'Hear it from ' + s.name, 'b') + '</h3></span>' +
       (s.m && s.m.kind === 'link' ? '<span class="chip">Watch on ' + esc(s.m.provider || 'the web') + ' ↗</span>' : s.duration ? '<span class="chip">▶ ' + esc(s.duration) + '</span>' : '') +
@@ -1443,8 +1516,8 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
         stopAll();
         var el;
         if (r.kind === 'embed') {
-          el = document.createElement('iframe'); el.src = r.embed;
-          el.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write'; el.allowFullscreen = true; el.title = 'Video from ' + s.name;
+          el = document.createElement('iframe'); el.src = r.embed; el.setAttribute('data-active', '1');
+          el.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write'; el.allowFullscreen = true; el.referrerPolicy = 'strict-origin-when-cross-origin'; el.title = 'Video from ' + s.name;
           if (r.shape === 'post') el.style.background = '#fff';
         } else {
           el = document.createElement(r.kind === 'audio' ? 'audio' : 'video'); el.src = r.src; el.controls = true; el.playsInline = true; el.setAttribute('playsinline', '');
@@ -1486,8 +1559,9 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function card(s, i, hi){
     var c = catById(s.cat);
     var shot = s.m
-      ? '<button class="shot" type="button" data-i="' + i + '" aria-label="Open the story of ' + esc(displayName(s)) + '">' + thumbHTML(s.m, 'Offer post: ' + displayName(s) + ', ' + s.role) + '<span class="vb">✓ Verified offer post</span><span class="zm">' + I.zoom + '</span></button>'
-      : '<div class="shot locked"><span>' + I.lock + 'Screenshot withheld for privacy</span></div>';
+      ? '<button class="shot" type="button" data-i="' + i + '" data-fb="' + esc(fbTile(s)) + '" aria-label="Open the story of ' + esc(displayName(s)) + '">' + thumbHTML(s.m, 'Offer post: ' + displayName(s) + ', ' + s.role) + vidMark(s) + '<span class="vb">' + (isVid(s) ? '▶ Video' : '✓ Verified offer post') + '</span><span class="zm">' + I.zoom + '</span></button>'
+      : s.masked ? '<div class="shot locked"><span>' + I.lock + 'Details withheld at the learner’s request</span></div>'
+      : '<button class="shot otile" type="button" data-i="' + i + '" aria-label="Open the story of ' + esc(displayName(s)) + '">' + offerTile(s) + '</button>';
     var co = s.company ? '<b>' + esc(s.company) + '</b>' + (s.city ? ' · ' + esc(s.city) : '') : s.masked ? 'Employer withheld' : esc(s.city || '');
     var move = s.from ? '<div class="move">' + esc(s.from) + ' <span>→</span> ' + esc(s.role) + '</div>' : '';
     var extra = (s.text ? '<p class="quote">“' + hl(s.text, 'b') + '”</p>' : '') + (s.note ? '<p class="co" style="margin-top:10px">' + esc(s.note) + '</p>' : '');
@@ -1511,7 +1585,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     var player = r.kind === 'link'
       ? '<a class="btn btn-sky vlink" href="' + esc(r.url) + '" target="_blank" rel="noopener">Listen on ' + esc(r.provider || 'the web') + ' <span class="arr" aria-hidden="true">↗</span></a>'
       : r.kind === 'embed'
-      ? '<iframe src="' + esc(r.embed) + '" title="Voice note from ' + esc(s.name) + '" allow="autoplay; encrypted-media" loading="lazy" style="height:' + (r.provider === 'Google Drive' ? 64 : r.provider === 'SoundCloud' ? 120 : 220) + 'px"></iframe>'
+      ? '<iframe src="' + esc(r.embed) + '" title="Voice note from ' + esc(s.name) + '" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" style="height:' + (r.provider === 'Google Drive' ? 96 : r.provider === 'SoundCloud' ? 120 : 220) + 'px"></iframe>'
       : '<div class="player"><button class="pbtn" type="button" aria-label="Play voice note from ' + esc(s.name) + '"><svg class="pico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg></button>' +
         '<div class="wave" role="slider" aria-label="Seek voice note" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"></div>' +
         '<span class="ptime">0:00 / ' + esc(tfmt(durSec(s.duration))) + '</span><audio preload="none" src="' + esc(r.src) + '"></audio></div>';
@@ -1549,7 +1623,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
       return '<li><span>' + esc(k) + '</span><span class="tr"><span data-w="' + Math.round(n / N * 100) + '"></span></span><span class="c">' + n + '/' + N + '</span></li>';
     }).join('');
     return '<div class="glass stack"><h3>The skills behind these offers</h3>' +
-      '<p class="sub">How many of the ' + N + ' ' + (use === inC && c ? esc(c.short) + ' ' : '') + 'learners in our placement records completed each module.</p><ul class="bars">' + rows + '</ul></div>';
+      '<p class="sub">How many of the ' + N + ' ' + (use === inC && c ? esc(c.short) + ' ' : '') + (N === 1 ? 'learner' : 'learners') + ' in our placement records completed each module.</p><ul class="bars">' + rows + '</ul></div>';
   }
   function showBars(){ $$('#why [data-w]').forEach(function (s) { s.style.width = s.getAttribute('data-w') + '%'; }); }
 
@@ -1568,7 +1642,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   var LB = [], lbI = 0, lbLast = null;
   function storyHTML(s){
     var c = catById(s.cat), steps = [];
-    steps.push(['Before', s.from || (c ? c.name : 'Joined PROITBRIDGE'), '']);
+    steps.push(['Before', joinedAs(s), '']);
     if (s.program || s.modules.length) steps.push(['Learned at PROITBRIDGE', s.program || 'PROITBRIDGE program', s.modules.join(' · ')]);
     steps.push(['Now', s.role, [s.company || (s.masked ? 'Employer withheld' : ''), s.city, s.date ? fmtDate(s.date) : ''].filter(Boolean).join(' · ')]);
     var meta = [];
@@ -1590,7 +1664,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function lbOpen(list, i, from){ LB = list; lbI = i; lbLast = from || null; lbShow(); $('#lb').classList.add('open'); document.body.style.overflow = 'hidden'; $('#lbX').focus(); }
   function lbShow(){
     var it = LB[lbI], box = $('#lbBox');
-    var media = paneHTML(it.res, !it.play, it.alt);
+    var media = !it.res && it.story && !it.story.masked ? '<div class="ot-pane">' + offerTile(it.story) + '</div>' : paneHTML(it.res, !it.play, it.alt);
     if (it.story) {
       box.className = 'lb-box story';
       box.innerHTML = '<div class="lb-media">' + media + origLink(it.res, 'lb-orig') + '</div><div class="lb-side">' + storyHTML(it.story) + '</div>';
@@ -1616,7 +1690,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     var el = $('#check'), by = {}, cats = {};
     DATA.stories.forEach(function (s) { by[s.type] = (by[s.type] || 0) + 1; var c = catById(s.cat); cats[c ? c.short : '(no category)'] = (cats[c ? c.short : '(no category)'] || 0) + 1; });
     var when = SRC.at ? new Date(SRC.at).toLocaleString() : 'unknown';
-    var probs = ISSUES.concat(BAD.map(function (b) { return 'Image or file not found: ' + b; }));
+    var probs = ERRS.map(function (e) { return 'Page error, please report: ' + e; }).concat(ISSUES, BAD.map(function (b) { return 'Image or file not found: ' + b; }));
     el.hidden = false;
     el.innerHTML = '<h4>Data check <button type="button" id="ckX" aria-label="Close">✕</button></h4>' +
       '<p>Source: <b>' + esc(SRC.name) + '</b> · ' + esc(when) + '</p>' +
@@ -1634,7 +1708,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function writeCache(s, t){ try { localStorage.setItem('ss-sheet-v1', JSON.stringify({ s: s, t: t, at: new Date().toISOString() })); } catch (e) {} }
   function looks(text, keys){ var h = String(text || '').replace(/^﻿/, '').split(/\r?\n/, 1)[0].toLowerCase(); return keys.every(function (k) { return h.indexOf(k) > -1; }); }
   function getText(u){ return fetch(u + (u.indexOf('?') > -1 ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }); }
-  function apply(s, t){ ISSUES = []; DATA = { stories: buildStories(s), stats: buildStats(t) }; renderAll(); }
+  function apply(s, t){ ISSUES = []; BAD = []; DATA = { stories: buildStories(s), stats: buildStats(t) }; renderAll(); }
   function refresh(){
     if (!CFG.STORIES_CSV) return;
     Promise.all([getText(CFG.STORIES_CSV), CFG.STATS_CSV ? getText(CFG.STATS_CSV).catch(function () { return null; }) : Promise.resolve(null)])
@@ -1663,20 +1737,21 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function spotlightList(){
     var offers = pick('offer').filter(function (o) { return !o.masked; });
     var list = offers.filter(function (o) { return o.featured; }).sort(function (a, b) { return a.row - b.row; });
-    offers.filter(function (o) { return !o.featured && o.m && o.lpa != null; }).sort(function (a, b) { return b.lpa - a.lpa; })
+    offers.filter(function (o) { return !o.featured && o.lpa != null; }).sort(function (a, b) { return (b.m ? 1 : 0) - (a.m ? 1 : 0) || b.lpa - a.lpa; })
       .forEach(function (o) { if (list.length < 4) list.push(o); });
     return list.slice(0, 8);
   }
   function renderSpotlight(){
     var keep = SP[spI] ? SP[spI].row : null;
     SP = spotlightList();
-    $('#spotlight').hidden = !SP.length; if (!SP.length) return;
+    $('#spotlight').hidden = !SP.length; if (!SP.length) { $('#spTabs').innerHTML = ''; $('#spStage').innerHTML = ''; return; }
     spI = 0; SP.forEach(function (s, i) { if (s.row === keep) spI = i; });
     $('#spTabs').innerHTML = SP.map(function (s, i) {
       return '<button type="button" role="tab" class="sp-tab" data-i="' + i + '" aria-selected="' + (i === spI) + '">' + avatar(s) +
         '<span><b>' + esc(s.name) + '</b><small>' + (s.lpa != null ? fmtLpa(s.lpa) + ' LPA' : esc(s.headline || s.role)) + '</small></span></button>';
     }).join('');
     $$('.sp-tab').forEach(function (b) { b.addEventListener('click', function () { spGo(+b.getAttribute('data-i'), true); }); });
+    $('#spSub').textContent = SP.some(function (s) { return s.m; }) ? 'Hand-picked stories from our learners, each with the offer post to prove it.' : 'Hand-picked stories from our placement records.';
     var many = SP.length > 1; $('#spPrev').hidden = !many; $('#spNext').hidden = !many; $('#spTabs').hidden = !many; $('#spCount').hidden = !many;
     spShow();
   }
@@ -1697,7 +1772,8 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
         (meta.length ? '<p class="sp-meta">' + meta.join('<i aria-hidden="true">/</i>') + '</p>' : '') +
         '<button class="btn btn-sky" type="button" data-sp-open>Read ' + esc(firstName(s)) + '’s story <span class="arr" aria-hidden="true">' + I.arr + '</span></button>' +
       '</div>' +
-      (s.m ? '<button class="sp-shot" type="button" data-sp-open aria-label="View the offer post">' + thumbHTML(s.m, 'Offer post: ' + s.name + ', ' + s.role) + '<span class="vb">✓ Verified offer post</span></button>' : '') +
+      (s.m ? '<button class="sp-shot" type="button" data-sp-open data-fb="' + esc(fbTile(s)) + '" aria-label="View the offer post">' + thumbHTML(s.m, 'Offer post: ' + s.name + ', ' + s.role) + vidMark(s) + '<span class="vb">' + (isVid(s) ? '▶ Video' : '✓ Verified offer post') + '</span></button>'
+           : '<button class="sp-shot sp-ot" type="button" data-sp-open aria-label="Read ' + esc(s.name) + '’s story">' + offerTile(s) + '</button>') +
       '</article>';
     $$('[data-sp-open]', $('#spStage')).forEach(function (b) {
       b.addEventListener('click', function () {
@@ -1714,6 +1790,9 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
 
   /* ---------- starting points ---------- */
   function renderJourneys(){
+    $('#jSub').textContent = DATA.stories.some(function (s) { return s.type === 'review' || s.type === 'quote' || s.type === 'video' || s.type === 'voice'; })
+      ? 'Pick your starting point to see the offers and testimonials from people who began exactly there.'
+      : 'Pick your starting point to see the offers from people who began exactly there.';
     $('#jgrid').innerHTML = CATS.map(function (c) {
       var list = storiesIn(c.id), seen = {}, people = [];
       list.forEach(function (s) { if (!s.masked && s.name && !seen[s.name] && people.length < 3) { seen[s.name] = 1; people.push(s); } });
@@ -1766,12 +1845,14 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     });
     current = list;
     var c = catById(state.cat);
-    $('#offersTitle').innerHTML = (c ? esc(c.short) + ' offers, with proof.' : 'Every offer, with proof.') + (list.length ? '<span class="num">' + list.length + '</span>' : '');
+    var anyProof = pick('offer').some(function (o) { return o.m; });
+    $('#offersTitle').innerHTML = (anyProof ? (c ? esc(c.short) + ' offers, with proof.' : 'Every offer, with proof.') : (c ? 'Where ' + esc(c.short) + ' learners landed.' : 'Where our learners landed.')) + (list.length ? '<span class="num">' + list.length + '</span>' : '');
+    $('#offersSub').textContent = anyProof ? 'Tap a card for the full story and the original post.' : 'Tap a card for the full story.';
     var g = $('#grid'), more = $('#more');
     if (!list.length) {
       more.hidden = true;
       var hasT = DATA.stories.some(function (s) { return inCat(s) && (s.type === 'review' || s.type === 'quote' || s.type === 'video' || s.type === 'voice'); });
-      g.innerHTML = '<div class="empty"><b>No ' + esc(c ? c.short : '') + ' offer posted yet.</b>' + (hasT ? 'See what ' + esc(c.short) + ' learners say in the testimonials below. ' : '') + 'Yours could be the first offer on this wall.<br><a class="btn btn-navy" data-link-to="induction" href="#">Start with the ₹89 induction <span class="arr" aria-hidden="true">' + I.arr + '</span></a></div>';
+      g.innerHTML = '<div class="empty"><b>No ' + esc(c ? c.short : '') + ' offer posted yet.</b>' + (hasT ? 'See what ' + (c ? esc(c.short) + ' learners say' : 'learners say') + ' in the testimonials below. ' : '') + 'Yours could be the first offer on this wall.<br><a class="btn btn-navy" data-link-to="induction" href="#">Start with the ₹89 induction <span class="arr" aria-hidden="true">' + I.arr + '</span></a></div>';
       applyLinks(g); return;
     }
     var shown = list.slice(0, state.shown);
@@ -1793,7 +1874,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function tvCard(s){
     var i = MEDIA.push(s) - 1, poster = posterOf(s), c = catById(s.cat), r = s.m;
     return '<button type="button" class="tv" data-tv="' + i + '" aria-label="Play video from ' + esc(s.name) + '">' +
-      '<span class="tv-img"' + (poster ? ' style="background-image:url(\'' + esc(cssUrl(poster)) + '\'),var(--tv-fb)"' : '') + '>' +
+      '<span class="tv-img' + (/i\.ytimg\.com/.test(poster) ? ' yt' : '') + '"' + (poster ? ' style="background-image:url(\'' + esc(cssUrl(poster)) + '\'),var(--tv-fb)"' : '') + '>' +
         '<span class="tv-play" aria-hidden="true">' + I.play + '</span>' +
         (r.kind === 'link' ? '<span class="chip">Opens on ' + esc(r.provider || 'the web') + ' ↗</span>' : s.duration ? '<span class="chip">▶ ' + esc(s.duration) + '</span>' : '') +
       '</span>' +
@@ -1805,6 +1886,11 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
     if (!force && playing(body)) { mediaStale = true; return; }
     mediaStale = false;
     var c = catById(state.cat), all = DATA.stories.filter(tGroup), list = all.filter(inCat), note = '';
+    var hasT = all.length > 0, gh = $('#heroGhost');
+    $('#testimonials').hidden = !hasT; $('#footT').hidden = !hasT;
+    gh.href = hasT ? '#testimonials' : '#journeys'; $('span:last-child', gh).textContent = hasT ? 'Read what learners say' : 'Find your starting point';
+    $('span:first-child', gh).hidden = !hasT;
+    if (!hasT) { body.innerHTML = ''; return; }
     if (c && !list.length && all.length) { list = all; note = 'No ' + c.short + ' testimonials yet. Here’s what learners from other starting points say.'; }
     var n = { all: list.length, video: 0, voice: 0, review: 0 };
     list.forEach(function (s) { n[tGroup(s)]++; });
@@ -1855,7 +1941,7 @@ window.SS_SNAPSHOT = {"generated":"2026-11-09T11:04:46.313Z","stories":"Publish,
   function renderWhy(){
     var p = pick('proof').slice(0, 2), el = $('#whyGrid');
     el.innerHTML = skillsHTML() + p.map(function (s, i) {
-      return '<div class="rc"><button class="shot" type="button" data-p="' + i + '">' + thumbHTML(s.m, s.name + ': ' + plain(s.text)) + '<span class="vb">✓ ' + esc(s.tags[0] ? s.tags[0].label : 'Real message') + '</span><span class="zm">' + I.zoom + '</span></button>' +
+      return '<div class="rc"><button class="shot" type="button" data-p="' + i + '" data-fb="' + esc(tileHTML({ kind: 'link', provider: '' })) + '">' + thumbHTML(s.m, s.name + ': ' + plain(s.text)) + '<span class="vb">✓ ' + esc(s.tags[0] ? s.tags[0].label : 'Real message') + '</span><span class="zm">' + I.zoom + '</span></button>' +
         '<p class="cap"><b>' + (s.text ? '“' + esc(plain(s.text)) + '”' : esc(s.name)) + '</b>' + esc(s.note) + '</p></div>';
     }).join('');
     el.className = 'why-grid n' + (p.length + (el.querySelector('.stack') ? 1 : 0));

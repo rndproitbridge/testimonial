@@ -43,10 +43,13 @@ html = html.replace(a, () => '<script>\n/* site-config.js (embedded) */\n' + saf
            .replace(b, () => '<script>\n/* sheet snapshot (embedded ' + new Date().toISOString().slice(0, 10) + ') */\n' + safe(snapshot) + '\n</script>');
 
 await mkdir(new URL('dist/', root), { recursive: true });
+// index.html is what web servers (nginx, Vercel, Netlify…) open for the site's address;
+// success-stories.html is the same file for uploading under that name.
+await writeFile(new URL('dist/index.html', root), html);
 await writeFile(new URL('dist/success-stories.html', root), html);
 
 const localPaths = [...stories.matchAll(/(?:^|,)"?(assets\/[^",\r\n]+)/gm)].map((m) => m[1]);
-console.log(`dist/success-stories.html written (${(html.length / 1024).toFixed(0)} KB, sheet copy from ${local || !pick('STORIES_CSV') ? 'sheet-template' : 'Google Sheets'})`);
+console.log(`dist/index.html + dist/success-stories.html written (${(html.length / 1024).toFixed(0)} KB, sheet copy from ${local || !pick('STORIES_CSV') ? 'sheet-template' : 'Google Sheets'})`);
 if (localPaths.length) {
   console.log(`\n⚠ ${localPaths.length} cells in the sheet still point to local files, which will NOT load from a single uploaded HTML file:`);
   [...new Set(localPaths)].forEach((p) => console.log('   ' + p));
